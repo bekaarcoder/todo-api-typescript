@@ -1,0 +1,15 @@
+### Fetch all tasks
+GET http://localhost:3200/tasks
+Content-Type: application/json
+
+### Create a task
+POST http://localhost:3200/tasks
+Content-Type: application/json
+
+{
+    "title": "Dummy title",
+    "date": "2023-02-21T12:00:00Z",
+    "description": "lorem ipsium",
+    "priority": "normal",
+    "status": "todo"
+}

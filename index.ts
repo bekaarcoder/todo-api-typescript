@@ -1,8 +1,10 @@
-import express, { Express, Request, Response } from 'express';
+import { taskRouter } from './src/tasks/tasks.router';
+import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import { Task } from './src/tasks/tasks.entity';
 
 const app: Express = express();
 dotenv.config();
@@ -21,14 +23,11 @@ export const AppDataSource = new DataSource({
   username: process.env.PG_USER,
   password: process.env.PG_PASSWORD,
   database: process.env.PG_DB,
+  entities: [Task],
   synchronize: true,
 });
 
 const port = process.env.PORT;
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express Server');
-});
 
 AppDataSource.initialize()
   .then(() => {
@@ -38,3 +37,5 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error('Error occured during Data Source initialization');
   });
+
+app.use('/tasks', taskRouter);
