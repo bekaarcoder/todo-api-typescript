@@ -7,9 +7,18 @@ POST http://localhost:3200/tasks
 Content-Type: application/json
 
 {
-    "title": "Dummy title",
+    "title": "Dummy Title 2nd",
     "date": "2023-02-21T12:00:00Z",
-    "description": "lorem ipsium",
-    "priority": "normal",
-    "status": "todo"
+    "description": "lorem ipsium 2nd",
+    "priority": "low",
+    "status": "inProgress"
+}
+
+### Update a task
+PUT http://localhost:3200/tasks
+Content-Type: application/json
+
+{
+    "id": "0436bf84-a14b-4850-a6e0-fd48a09848a3",
+    "status": "inProgress"
 }

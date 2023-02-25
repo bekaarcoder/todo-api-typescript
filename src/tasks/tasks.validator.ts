@@ -29,3 +29,17 @@ export const createValidator: ValidationChain[] = [
     .isIn([Status.todo, Status.inProgress, Status.completed])
     .withMessage('Priority can only be todo, inProgress or completed'),
 ];
+
+export const updateValidator = [
+  body('id')
+    .not()
+    .isEmpty()
+    .withMessage('Task id is required')
+    .trim()
+    .isString()
+    .withMessage('ID is not valid'),
+  body('status')
+    .trim()
+    .isIn([Status.todo, Status.inProgress, Status.completed])
+    .withMessage('Priority can only be todo, inProgress or completed'),
+];
